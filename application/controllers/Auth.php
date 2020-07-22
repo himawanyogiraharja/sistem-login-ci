@@ -169,5 +169,24 @@ class Auth extends CI_Controller {
 					</div>');
 	redirect('auth/login');
 	}
+
+	function logoutUser3(){
+		$email = $this->session->userdata('email');
+		$query = $this->db->get_where('tb_user', ['email' =>  $email])->row_array();
+		$this->session->unset_userdata('name');
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('image');
+		$this->session->unset_userdata('password');
+		$this->session->unset_userdata('role_id');
+		$this->session->unset_userdata('is_active');
+		$this->session->unset_userdata('date_create');
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+					  <strong>Terimakasih!</strong> Anda berhasil logout
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>');
+	redirect('auth/login');
+	}
 }
 
