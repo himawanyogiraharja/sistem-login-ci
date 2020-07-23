@@ -25,13 +25,19 @@
       <div class="sidebar-heading">
         Interface
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('mobil') ?>">
+        <a class="nav-link" href="<?php echo base_url('order') ?>">
           <i class="fas fa-fw fa-car"></i>
-          <span>Mobil</span></a>
+          <span>Order</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('history') ?>">
+          <i class="fas fa-fw fa-car"></i>
+          <span>History Order</span></a>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -40,13 +46,31 @@
         Master Data
       </div>
 
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('mobil') ?>">
+          <i class="fas fa-fw fa-car"></i>
+          <span>Mobil</span></a>
+      </li>
       
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('user') ?>">
+      <?php 
+        if($this->session->userdata('user_access') == 'administrator'){
+          echo '
+            <li class="nav-item">
+        <a class="nav-link" href="'.base_url('user').'">
           <i class="fas fa-fw fa-user"></i>
           <span>Users</span></a>
       </li>
+          ';
+    } else {
+         echo '
+            <li class="nav-item">
+        <a class="nav-link" href="'.base_url('user').'">
+          <i class="fas fa-fw fa-user"></i>
+          <span>bukan admin</span></a>
+      </li>';
+    }
+       ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

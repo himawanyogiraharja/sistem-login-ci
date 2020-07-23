@@ -5,6 +5,9 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		if(empty($this->session->userdata('email'))){
+			redirect('auth/login');
+		}
 	}
 
 function index(){

@@ -7,6 +7,9 @@ class Mobil extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_mobil');
 		$this->load->library('form_validation');
+		if(empty($this->session->userdata('email'))){
+			redirect('auth/login');
+		}
 	}
 
 function index(){

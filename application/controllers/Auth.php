@@ -126,13 +126,13 @@ class Auth extends CI_Controller {
 			'nama' => $query['nama'],
 			'email' => $query['email'],
 			'foto' => $query['foto'],
-			'user_acces' => $query['user_acces']
+			'user_access' => $query['user_access']
 		];
 
 		$this->session->set_userdata($data);
 	}
 
-	function logoutUser(){
+	function logout(){
 		$email = $this->session->userdata('email');
 		$query = $this->db->get_where('tb_user', ['email' =>  $email])->row_array();
 		$this->session->unset_userdata('name');
@@ -140,6 +140,7 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('image');
 		$this->session->unset_userdata('password');
 		$this->session->unset_userdata('role_id');
+		$this->session->unset_userdata('user_access');
 		$this->session->unset_userdata('is_active');
 		$this->session->unset_userdata('date_create');
 		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">

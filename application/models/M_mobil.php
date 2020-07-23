@@ -13,4 +13,6 @@ class M_mobil extends CI_Model {
 		return $this->db->query("DELETE FROM `tb_mobil` WHERE `id` = $id");
 	}
 
+	
+
 }
