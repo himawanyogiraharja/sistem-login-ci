@@ -15,7 +15,7 @@
        <div class="card shadow mb-4">
          <!-- Card Header - Dropdown -->
          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <?php echo $this->session->flashdata('pesan') ?>
+           <?php echo $this->session->flashdata('pesan') ?>
            <h6 class="m-0 font-weight-bold text-primary">Form Order Rental Mobil</h6>
            <div class="dropdown no-arrow">
              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,10 +43,11 @@
                    <option></option>
                    <?php
                     foreach ($getMobil as $i) :
-                      echo '<option value="'.$i['nama'].'">' . $i['nama'] . '</option>';
+                      echo '<option value="' . $i['nama'] . '">' . $i['nama'] . '</option>';
                     endforeach;
                     ?>
                  </select>
+                 <small class="text-danger"><?php echo form_error('mobil') ?></small>
                </div>
                <div class="form-group">
                  <input type="text" name="durasi_pinjaman" class="form-control form-control-user" placeholder="Durasi Pinjaman" value="<?php echo set_value('durasi_pinjaman') ?>">
