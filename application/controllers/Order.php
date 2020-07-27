@@ -12,6 +12,7 @@ class Order extends CI_Controller{
 
 			$data['title']		='Halaman Form Order';
 			$data['contents']	='order/v_form_order';
+			$data['getMobil']	= $this->m_order->getMobil();
 
 			$this->load->view('templates/core', $data);
 		}
@@ -28,7 +29,7 @@ class Order extends CI_Controller{
 			'required'	=> '*Silahkan isi durasi pinjaman!']);
 		$this->form_validation->set_rules('tahun_mobil', 'Tahun Mobil', 'required', [
 			'required'	=> '*Tahun mobil belum terisi!']);
-		$this->form_validation->set_rules('tujuan', 'Tahun Mobil', 'required', [
+		$this->form_validation->set_rules('tujuan', 'Tujuan', 'required', [
 			'required'	=> '*Silahkan isi tujuan anda!']);
 		$this->form_validation->set_rules('harga_sewa_mobil', 'Harga Sewa', 'required', [
 			'required'	=> '*Harga mobil belum terisi!']);
@@ -55,17 +56,13 @@ class Order extends CI_Controller{
 				'tujuan'			=> $tujuan,
 				'date_created'		=> time()
 			];
+			// var_dump($data); die;
 
 		$this->db->insert('tb_order', $data);
-		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-					  <strong>Yeay!</strong> Data order mobil berhasil diinput
-					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					    <span aria-hidden="true">&times;</span>
-					  </button>
-					</div>');
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Yeay!</h4>Berhasil!. Data pengemudi sudah diupdate!</div>');
 		redirect('order');
-
 		}
+	redirect('mobil');
 
 	}
 

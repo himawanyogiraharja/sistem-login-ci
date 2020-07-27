@@ -15,6 +15,7 @@
        <div class="card shadow mb-4">
          <!-- Card Header - Dropdown -->
          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <?php echo $this->session->flashdata('pesan') ?>
            <h6 class="m-0 font-weight-bold text-primary">Form Order Rental Mobil</h6>
            <div class="dropdown no-arrow">
              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,15 +35,15 @@
            <div class="chart-area">
              <form class="user" action="<?php echo base_url('order/tambah') ?>" method="post">
                <div class="form-group">
-                 <input type="text" name="nama" class="form-control form-control-user" placeholder="Nama Mobil" value="<?php echo set_value('nama') ?>">
+                 <input type="text" name="nama" class="form-control form-control-user" placeholder="Nama" value="<?php echo set_value('nama') ?>">
                  <small class="text-danger"><?php echo form_error('nama') ?></small>
                </div>
                <div class="form-group">
-                 <select class="form-control form-control-user" id="mobil" name="mobil">
+                 <select class="form-control" id="mobil" name="mobil">
                    <option></option>
                    <?php
                     foreach ($getMobil as $i) :
-                      echo '<option>' . $getMobil['nama'] . '</option>';
+                      echo '<option value="'.$i['nama'].'">' . $i['nama'] . '</option>';
                     endforeach;
                     ?>
                  </select>
@@ -60,14 +61,8 @@
                  <small class="text-danger"><?php echo form_error('harga_sewa_mobil') ?></small>
                </div>
                <div class="form-group float-right">
-                 <button type="submit" class="btn btn-primary btn-user">
-                   Simpan
-                 </button>
+                 <button type="submit" class="btn btn-primary btn-user">Simpan</button>
                </div>
-
-
-
-
              </form>
            </div>
          </div>
